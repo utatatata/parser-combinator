@@ -64,6 +64,12 @@ describe('combinators', () => {
             ['d', 'e'],
           ])
         })
+
+        test('cause error when all parsers are failed', () => {
+          expect(() => {
+            c.or(g.char('a'), g.char('b'), g.char('c'))('def')
+          }).toThrow()
+        })
       })
 
       describe('option', () => {
