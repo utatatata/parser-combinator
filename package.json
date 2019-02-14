@@ -1,0 +1,25 @@
+{
+  "name": "parser-combinator",
+  "version": "0.1.0",
+  "description": "Light-weight parser combinator",
+  "main": "src/index.js",
+  "repository": "https://github.com/utatatata/parser-combinator.git",
+  "author": "utakuma <utatatata.kuma@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "mutation": "stryker run"
+  },
+  "devDependencies": {
+    "husky": "^1.2.0",
+    "jest": "^23.6.0",
+    "lint-staged": "^8.1.0",
+    "prettier": "^1.15.3",
+    "stryker": "^0.34.0",
+    "stryker-api": "^0.23.0",
+    "stryker-cli": "^0.2.0",
+    "stryker-javascript-mutator": "^0.13.0",
+    "stryker-jest-runner": "^1.3.0"
+  }
+}
