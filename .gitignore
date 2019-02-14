@@ -77,3 +77,6 @@ typings/
 
 # Destination directory
 /dist/
+
+# Stryker mutator
+/reports/
