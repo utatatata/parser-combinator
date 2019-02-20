@@ -8,13 +8,17 @@ describe('helpers', () => {
 
   const describePredicate = (f, intputResultPairs) =>
     describe(f.name, () => {
-      intputResultPairs.forEach(([input, result]) =>
-        test(`${input} is ${result ? '' : 'not '}a ${f.name
-          .replace('is', '')
-          .toLowerCase()}`, () => {
-          expect(f(input)).toBe(result)
-        })
-      )
+      intputResultPairs.forEach(([input, result, skip = false]) => {
+        const t = skip ? test.skip : test
+        return t(
+          `${input} is ${result ? '' : 'not '}a ${f.name
+            .replace('is', '')
+            .toLowerCase()}`,
+          () => {
+            expect(f(input)).toBe(result)
+          }
+        )
+      })
     })
 
   describePredicate(h.isDigit, [
@@ -37,16 +41,16 @@ describe('helpers', () => {
 
   describePredicate(h.isAlphaNum, [
     ['1', true],
-    ['0', true],
-    ['9', true],
+    ['0', true, true],
+    ['9', true, true],
     ['12', false],
-    ['-', false],
-    ['a', true],
-    ['z', true],
-    ['b', true],
-    ['ba', false],
-    ['+', false],
-    ['a-', false],
+    ['-', false, true],
+    ['a', true, true],
+    ['z', true, true],
+    ['b', true, true],
+    ['ba', false, true],
+    ['+', false, true],
+    ['a-', false, true],
   ])
 
   describePredicate(h.isLetter, [
@@ -61,10 +65,10 @@ describe('helpers', () => {
     [' ', true],
     ['\t', true],
     ['a', false],
-    [' a', false],
-    ['\ta', false],
-    ['a ', false],
-    ['a\t', false],
-    ['_afe', false],
+    [' a', false, true],
+    ['\ta', false, true],
+    ['a ', false, true],
+    ['a\t', false, true],
+    ['_afe', false, true],
   ])
 })
